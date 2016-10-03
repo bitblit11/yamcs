@@ -26,7 +26,7 @@ Yet another Mission Control System
   cd yamcs-web && npm install && gulp && cd ..
 %endif
 
-#mvn clean compile package -Dmaven.test.skip=true -Dmaven.buildNumber.doUpdate=false
+mvn clean compile package -Dmaven.test.skip=true -Dmaven.buildNumber.doUpdate=false
 
 %install
 mkdir -p %{buildroot}/%{prefix}/mdb
