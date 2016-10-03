@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "init": "npm install",
-    "install": "bower install --config.interactive=false"
+    "install": "bower install --config.interactive=false --allow-root"
   },
   "devDependencies": {
     "del": "^2.0.2",
