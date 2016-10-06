@@ -76,7 +76,11 @@ public class YConfiguration {
         prefix=configPrefix;
         configurations.clear();//forget any known config (useful in the maven unit tests called in the same VM)
         if(System.getenv("YAMCS_DAEMON")==null) {
-            userConfigDirectory=System.getProperty("user.home")+File.separatorChar+".yamcs";
+            if(System.getenv("YAMCS_WORKSPACE")!=null) {
+		userConfigDirectory=System.getenv("YAMCS_WORKSPACE");
+            } else {
+                userConfigDirectory=System.getProperty("user.home")+File.separatorChar+".yamcs";
+            }
             File logDir = new File(userConfigDirectory+File.separatorChar+"log");
             if (!logDir.exists()) {
                 if (logDir.mkdirs()) {
@@ -87,9 +91,13 @@ public class YConfiguration {
             }
             System.getProperties().put("cacheDirectory", userConfigDirectory+File.separatorChar);
         } else {
-            String yamcsDirectory=System.getProperty("user.home");
-            System.getProperties().put("cacheDirectory", yamcsDirectory+File.separatorChar+"cache"+File.separatorChar);
-            userConfigDirectory=yamcsDirectory+File.separatorChar+"etc";
+            if(System.getenv("YAMCS_WORKSPACE")!=null) {
+		userConfigDirectory=System.getenv("YAMCS_WORKSPACE");
+            } else {
+                String yamcsDirectory=System.getProperty("user.home");
+                System.getProperties().put("cacheDirectory", yamcsDirectory+File.separatorChar+"cache"+File.separatorChar);
+                userConfigDirectory=yamcsDirectory+File.separatorChar+"etc";
+            }
         }
 
         if(System.getProperty("java.util.logging.config.file")==null) {
