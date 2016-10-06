@@ -312,9 +312,9 @@ public class XtceDbFactory {
 	    
             String prefix = "";
             if(System.getenv("YAMCS_WORKSPACE")!=null) {
-		prefix=System.getenv("YAMCS_WORKSPACE");
+		prefix=System.getenv("YAMCS_WORKSPACE") + "/";
             }
-            l=new SpreadsheetLoader(prefix+"/"+(String)args);
+            l=new SpreadsheetLoader(prefix+(String)args);
         } else {
             // custom class
             try {
