@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "init": "npm install",
-    "install": "bower install --config.interactive=false"
+    "init": "npm install --unsafe-perm",
+    "install": "bower install --config.interactive=false --allow-root"
   },
   "devDependencies": {
     "del": "^2.0.2",

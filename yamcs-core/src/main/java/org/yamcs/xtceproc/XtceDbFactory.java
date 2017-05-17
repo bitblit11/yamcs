@@ -339,7 +339,11 @@ public class XtceDbFactory {
             if(args==null) {
                 throw new ConfigurationException("No argument specified for loading the XTCE spreadhseet in mdb.yaml section: "+m);
             }
-            l=new SpreadsheetLoader((String)args);
+            String prefix = "";
+            if(System.getenv("YAMCS_WORKSPACE")!=null) {
+		prefix=System.getenv("YAMCS_WORKSPACE") + "/";
+            }
+            l=new SpreadsheetLoader(prefix+(String)args);
         } else {
             // custom class
             try {
